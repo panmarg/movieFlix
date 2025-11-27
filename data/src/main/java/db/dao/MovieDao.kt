@@ -17,4 +17,10 @@ interface MovieDao {
 
     @Query("DELETE FROM movies")
     suspend fun clearAll()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(movie: MovieEntity)
+
+    @Query("SELECT * FROM movies WHERE id = :movieId LIMIT 1")
+    fun getMovieFlow(movieId: Int): Flow<MovieEntity?>
 }

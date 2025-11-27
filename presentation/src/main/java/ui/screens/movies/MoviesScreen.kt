@@ -67,7 +67,7 @@ fun MoviesScreen(
 
     LaunchedEffect(state) {
         Log.d(
-            "MoviesVM",
+            "MoviesScreen",
             "Screen moviesCount=${state.movies?.size}, " +
                     "currentPage=${state.currentPage}, " +
                     "contentState=${state.contentState}, " +

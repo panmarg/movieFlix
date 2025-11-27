@@ -2,15 +2,10 @@ package ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val PrimaryLight = Color(0xFF1E88E5)
+val PrimaryLight = Color(0xFFFFC107)
 val OnPrimaryLight = Color.White
-val PrimaryDark = Color(0xFF90CAF9)
+val PrimaryDark = Color(0xFFFFD54F)
 val OnPrimaryDark = Color.Black
-
-val SecondaryLight = Color(0xFFFFC107)
-val OnSecondaryLight = Color.Black
-val SecondaryDark = Color(0xFFFFD54F)
-val OnSecondaryDark = Color.Black
 
 val BackgroundLight = Color(0xFFF5F5F5)
 val OnBackgroundLight = Color(0xFF121212)

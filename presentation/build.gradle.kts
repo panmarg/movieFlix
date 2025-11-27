@@ -55,7 +55,7 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
+    implementation(libs.coil.network.ktor3)
 
     // Navigation
     implementation(libs.navigation.compose)

@@ -8,7 +8,7 @@ import db.entity.MovieEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
-import mapper.MovieMapper
+import mapper.MoviesMapper
 import model.Movie
 import remote.MovieApi
 
@@ -16,7 +16,7 @@ class MovieRepositoryImpl(
     private val api: MovieApi,
     private val movieDao: MovieDao,
     private val favoriteDao: FavoriteDao,
-    private val mapper: MovieMapper
+    private val mapper: MoviesMapper
 ) : MovieRepository {
 
     override fun getMoviesFromDB(): Flow<List<Movie>> =

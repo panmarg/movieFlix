@@ -3,11 +3,9 @@ package ui.screens.movies
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import common.ResultResponse
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,7 +21,6 @@ class MoviesViewModel(
     private val loadMoviesUseCase: LoadMoviesUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase
 ) : ViewModel() {
-
     private val _state = MutableStateFlow(MoviesState())
     val state: StateFlow<MoviesState> = _state.asStateFlow()
 
@@ -54,7 +51,7 @@ class MoviesViewModel(
         viewModelScope.launch {
             getMoviesUseCase().collect { movies ->
                 _state.update { it.copy(movies = movies) }
-                if (movies.isEmpty()) {
+                if (movies.isEmpty() && !state.value.isPullToRefresh) {
                     loadInitialMovies()
                 }
             }
@@ -67,6 +64,7 @@ class MoviesViewModel(
             try {
                 when (val response = loadMoviesUseCase.invoke(1)) {
                     is ResultResponse.Error -> {
+                        delay(200)
                         _state.update {
                             it.copy(
                                 contentState = ContentState.Error(

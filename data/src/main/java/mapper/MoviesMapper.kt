@@ -5,8 +5,9 @@ import model.Movie
 import remote.ApiConfig
 import remote.dto.MovieDto
 
-class MovieMapper(private val config: ApiConfig) {
-    fun dtoToEntity(dto: MovieDto) = MovieEntity(
+class MoviesMapper(private val config: ApiConfig) {
+
+    fun dtoToEntity(dto: MovieDto): MovieEntity = MovieEntity(
         id = dto.id,
         title = dto.title,
         originalTitle = dto.originalTitle,
@@ -17,10 +18,11 @@ class MovieMapper(private val config: ApiConfig) {
         popularity = dto.popularity,
         voteAverage = dto.voteAverage,
         voteCount = dto.voteCount,
-        adult = dto.adult
+        adult = dto.adult,
+
     )
 
-    fun entityToDomain(entity: MovieEntity, isFavorite: Boolean) = Movie(
+    fun entityToDomain(entity: MovieEntity, isFavorite: Boolean): Movie = Movie(
         id = entity.id,
         title = entity.title,
         originalTitle = entity.originalTitle,
@@ -34,5 +36,6 @@ class MovieMapper(private val config: ApiConfig) {
         adult = entity.adult,
         isFavorite = isFavorite
     )
+
 }
 

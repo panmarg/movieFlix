@@ -1,5 +1,6 @@
 package di
 
 val presentationModule = listOf(
-    viewModelsModule
+    viewModelsModule,
+    imageModule
 )

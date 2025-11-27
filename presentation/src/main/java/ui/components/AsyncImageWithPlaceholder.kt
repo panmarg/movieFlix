@@ -18,7 +18,8 @@ import com.example.presentation.R
 fun AsyncImageWithPlaceholder(
     imageUrl: String?,
     contentDescription: String? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    contentScale : ContentScale = ContentScale.Crop,
 ) {
     val model = imageUrl.takeIf { !it.isNullOrEmpty() } ?: R.drawable.ic_placeholder
 
@@ -26,6 +27,7 @@ fun AsyncImageWithPlaceholder(
         modifier = modifier,
         model = model,
         contentDescription = contentDescription,
+
         loading = {
             Box(modifier = modifier.fillMaxSize().shimmerEffect())
         },
@@ -37,7 +39,7 @@ fun AsyncImageWithPlaceholder(
                 ImageErrorSection()
             }else{
                 SubcomposeAsyncImageContent(
-                    contentScale = ContentScale.Crop
+                    contentScale = contentScale
                 )
             }
         }

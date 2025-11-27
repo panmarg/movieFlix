@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.example.presentation.R
 import model.Movie
 import ui.components.AsyncImageWithPlaceholder
+import ui.components.VoteProgressBar
 import utils.toUiDate
 
 @Composable
@@ -48,7 +50,7 @@ fun MovieItem(movie: Movie, onFavoriteClick: () -> Unit, onMovieClick: (movieId:
                 AsyncImageWithPlaceholder(
                     modifier = Modifier.fillMaxSize(),
                     imageUrl = movie.backdropPath,
-                    contentDescription = movie.title,
+                    contentDescription = movie.title
                 )
                 Box(
                     modifier = Modifier
@@ -65,7 +67,7 @@ fun MovieItem(movie: Movie, onFavoriteClick: () -> Unit, onMovieClick: (movieId:
                         modifier = Modifier.size(24.dp),
                         painter = painterResource(if (movie.isFavorite) R.drawable.ic_heart_fill else R.drawable.ic_heart),
                         contentDescription = "Favorite",
-                        tint = if (movie.isFavorite) MaterialTheme.colorScheme.secondary else Color.White
+                        tint = if (movie.isFavorite) MaterialTheme.colorScheme.primary else Color.White
                     )
                 }
             }

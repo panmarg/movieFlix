@@ -6,8 +6,6 @@ sealed class MoviesIntent {
     object LoadMovies : MoviesIntent()
     object RefreshMovies : MoviesIntent()
     data class ToggleFavorite(val movieId: Int) : MoviesIntent()
-
     data class MovieClicked(val movieId: Int) : MoviesIntent()
-
 
 }
